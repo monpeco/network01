@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Button, FormControl, InputLabel, Select, Chip, Input, MenuItem } from '@material-ui/core'
+import { Container, Typography, Button, FormControl, InputLabel, Select, Chip, Input, MenuItem } from '@material-ui/core'
 
 const availableTestbenches = [
     'mBT84',
@@ -8,7 +8,8 @@ const availableTestbenches = [
 ];
 
 function Configuration(props) {
-  const { testBenchSelected, setTestBenchSelected } = props
+  const { testBenchSelected, setTestBenchSelected, measurementFile, setMeasurementFile } = props
+
   return (
     <Container>
       <FormControl fullWidth>
@@ -34,10 +35,12 @@ function Configuration(props) {
           id="txtFileUpload"
           name="txtFileUpload"
           type="file"
+          onChange={(e) => setMeasurementFile(e.target.files[0])}
         />
-        <Button variant="contained" id="something" component="span">
+        <Button variant="contained" component="span">
             Upload measurement file
         </Button>
+        <Typography variant="body2">{ measurementFile ? measurementFile.name : "No file"}</Typography>
       </label>
     </Container>
   );

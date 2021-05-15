@@ -5,11 +5,11 @@ import Configuration from './components/configuration'
 
 function App() {
   const [ testBenchSelected, setTestBenchSelected ] = useState([])
-  console.log(testBenchSelected)
+  const [ measurementFile, setMeasurementFile ] = useState('')
   return (
     <div className="App">
       <Title />
-      <Configuration testBenchSelected={testBenchSelected} setTestBenchSelected={setTestBenchSelected} />
+      <Configuration measurementFile={measurementFile} setMeasurementFile={setMeasurementFile} testBenchSelected={testBenchSelected} setTestBenchSelected={setTestBenchSelected} />
     </div>
   );
 }
