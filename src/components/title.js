@@ -1,6 +1,6 @@
 import React, { PureComponent, Component } from 'react';
 import { Container, Typography } from '@material-ui/core'
-import { LightBulbIcon} from '@material-ui/icons'
+import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 
 class Title extends Component {
     render() { 
@@ -8,7 +8,7 @@ class Title extends Component {
             <Container>
                 <Typography variant="h4">CARM network performance test GUI - 0.2a</Typography>
                 <Typography variant="body1" color="textSecondary">
-                    <LightBulbIcon />
+                    <EmojiObjectsIcon />
                     Ask MPSM team
                 </Typography>
             </Container>
