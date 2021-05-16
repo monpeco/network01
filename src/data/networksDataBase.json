@@ -1,0 +1,27 @@
+{
+  "networks" : [
+    {
+      "name" : "Test_1",
+      "inputBlocks" : [
+        "NJCAWMxWIM:SensorCorrections.const_h11",
+        "NJCAWMxWIM:SensorCorrections.const_h12"
+      ],
+      "outputBlocks" : [
+        "NJCAWMxWIM:ExternalPose.H2Q_PNS",
+        "NJCAWMxWIM:ExternalPose.H2Q_TC"
+      ]
+    },
+    {
+      "name" : "Test_2",
+      "inputBlocks" : [
+        "NJCAWMxWIM:SensorCorrections.const_h10",
+        "NJCAWMxWIM:SensorCorrections.const_h11",
+        "NJCAWMxWIM:SensorCorrections.const_h12"
+      ],
+      "outputBlocks" : [
+        "NJCAWMxWIM:ExternalPose.H2Q_PNS",
+        "NJCAWMxWIM:ExternalPose.H2Q_TC"
+      ]
+    }
+  ]
+}
