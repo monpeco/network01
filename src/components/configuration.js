@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Typography, Button, FormControl, InputLabel, Select, Chip, Input, MenuItem } from '@material-ui/core'
+import SelectField from './selectfield'
 
 const availableTestbenches = [
     'mBT84',
@@ -12,23 +13,7 @@ function Configuration(props) {
 
   return (
     <Container>
-      <FormControl fullWidth>
-        <InputLabel id="demo-mutiple-chip-label">Select testbenches</InputLabel>
-        <Select
-          labelId="demo-mutiple-chip-label"
-          id="demo-mutiple-chip"
-          multiple
-          value={testBenchSelected}
-          onChange={(e) => setTestBenchSelected(e.target.value)}
-          input={<Input />}
-        >
-          {availableTestbenches.map((name) => (
-            <MenuItem key={name} value={name} >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      <SelectField label="Select Testbenches" options={availableTestbenches} value={testBenchSelected} setValue={setTestBenchSelected}/>
       <label htmlFor="txtFileUpload">
         <input
           style={{ display: 'none' }}
