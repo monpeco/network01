@@ -14,6 +14,7 @@ function App() {
   const [ networkBlocks, setNetworkBlocks ] = useState([])
   const [ inputNetworkBlock, setInputNetworkBlock ] = useState([])
   const [ outputNetworkBlock, setOutputNetworkBlock ] = useState([])
+  const [ chartData, setChartData ] = useState({})
   console.log("networkblocks app", networkBlocks)
   console.log(networkBlocks)
 
@@ -25,19 +26,16 @@ function App() {
   }
 
   function upload(file) {
-    let chartData = null;
     let reader = new FileReader();
     let networkBlocks
     reader.readAsText(file);
     reader.onload = function(event) {
       let csvData = event.target.result;
       // The header:true leads to ugly workaround in perf-chart.js line 39
-      chartData = Papa.parse(csvData, {header : true});
+      setChartData(Papa.parse(csvData, {header : true}))
       let chartData1 = Papa.parse(csvData);
       networkBlocks = fillNetworkBlocks(chartData1);
       updateChart(chartData);
-      // let inputFileUploaded = true;
-      console.log("app", networkBlocks)
       setNetworkBlocks(networkBlocks)
     };
     reader.onerror = function() {
@@ -49,8 +47,8 @@ function App() {
     <div className="App">
       <Title />
       <Configuration measurementFile={measurementFile} setMeasurementFile={handleChange} testBenchSelected={testBenchSelected} setTestBenchSelected={setTestBenchSelected} />
-      <DBNetwork network={data.networks[0]} />
-      <DBNetwork network={data.networks[1]} />
+      <DBNetwork network={data.networks[0]} chartData={chartData} />
+      <DBNetwork network={data.networks[1]} chartData={chartData} />
       {measurementFile && 
       <>
         <SelectField label="Select input blocks" options={networkBlocks} value={inputNetworkBlock} setValue={setInputNetworkBlock}/>

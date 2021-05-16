@@ -1,11 +1,13 @@
 import React from 'react';
 import { Container, Button } from '@material-ui/core'
+import { networks, updateChart } from '../utils/utils'
 
 function DBNetwork (props) {
     const { network, chartData } = props
 
     function pushNetwork() {
       networks.push(network);
+      updateChart(chartData);
     }
 
     return(
