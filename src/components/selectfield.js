@@ -13,11 +13,22 @@ function SelectField(props){
         onChange={(e) => setValue(e.target.value)}
         input={<Input />}
       >
-        {options.map((name) => (
-          <MenuItem key={name} value={name} >
-            {name}
-          </MenuItem>
-        ))}
+        {options.map((el) =>{
+          if(typeof(el) === "string"){
+            return (
+              <MenuItem key={el} value={el} >
+                {el}
+              </MenuItem>
+            )
+          }else{
+            return (
+              <MenuItem key={el.name} value={el.name} >
+                {el.name}
+              </MenuItem>
+            )
+          }
+        } 
+        )}
       </Select>
     </FormControl>
   )
