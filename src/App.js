@@ -55,6 +55,7 @@ function App() {
         <SelectField label="Select output blocks" options={networkBlocks} value={outputNetworkBlock} setValue={setOutputNetworkBlock}/>
       </>
       }
+      <div id="chart"></div>
     </div>
   );
 }
