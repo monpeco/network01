@@ -1,7 +1,7 @@
 import Papa from 'papaparse'
 import ApexCharts from 'apexcharts'
 
-var networks = [];
+export var networks = [];
 var chart = null;
 var options = {
     series: [],
