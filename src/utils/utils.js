@@ -60,8 +60,8 @@ export function fillNetworkBlocks(chartData) {
 
 var createNetworkTimings = function(data, network) {
   return new Promise(function(resolve, reject){
-    var startBlocks = network['startBlocks'];
-    var endBlocks = network['endBlocks'];
+    var startBlocks = network.inputBlocks;
+    var endBlocks = network.outputBlocks;
     console.log("html 4 - createNetworkTimings");
     console.log(startBlocks);
     // Ugly solution following from the CSV file format
@@ -123,17 +123,12 @@ var createTimeSeries = function(data,networks) {
 }
   
 export function updateChart(chartData) {
-  console.log("updateChart")
-
   if(chartData) {
     var chartNetworks = []
     if (networks.length > 0) {
-      //var chartNetworks = []
       networks.forEach((network) => {
-        if (network.hasOwnProperty('startBlocks') && network.hasOwnProperty('endBlocks')) {
+        if (network.hasOwnProperty('inputBlocks') && network.hasOwnProperty('outputBlocks')) {
           chartNetworks.push(network);
-          console.log(">>>> chartNetworks")
-          console.log(chartNetworks)
         }
       });
       perfChart(chartData.data, chartNetworks);
