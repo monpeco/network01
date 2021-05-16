@@ -35,25 +35,7 @@ var options = {
   },
   };
 
-export function upload(file) {
-  let chartData = null;
-  let reader = new FileReader();
-  reader.readAsText(file);
-  reader.onload = function(event) {
-    let csvData = event.target.result;
-    // The header:true leads to ugly workaround in perf-chart.js line 39
-    chartData = Papa.parse(csvData, {header : true});
-    let chartData1 = Papa.parse(csvData);
-    fillNetworkBlocks(chartData1);
-    updateChart(chartData);
-    // let inputFileUploaded = true;
-  };
-  reader.onerror = function() {
-    alert('Unable to read ' + file.fileName);
-  };
-}
-
-function fillNetworkBlocks(chartData) {
+export function fillNetworkBlocks(chartData) {
   console.log("fillNetworkBlocks")
 
   var networkNameArr = [];
@@ -72,6 +54,8 @@ function fillNetworkBlocks(chartData) {
   });
 
   //addNetwork();
+  console.log("networkBlocks",networkBlocks)
+  return networkBlocks
 }
 
 var createNetworkTimings = function(data, network) {
@@ -138,7 +122,7 @@ var createTimeSeries = function(data,networks) {
   });
 }
   
-function updateChart(chartData) {
+export function updateChart(chartData) {
   console.log("updateChart")
 
   if(chartData) {
