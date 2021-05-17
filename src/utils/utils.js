@@ -122,10 +122,11 @@ var createTimeSeries = function(data,networks) {
   });
 }
   
-export function updateChart(chartData) {
-  if(chartData) {
+export function updateChart(chartData, networks) {
+  if(chartData && networks) {
     var chartNetworks = []
     if (networks.length > 0) {
+        console.log("length")
       networks.forEach((network) => {
         if (network.hasOwnProperty('inputBlocks') && network.hasOwnProperty('outputBlocks')) {
           chartNetworks.push(network);
