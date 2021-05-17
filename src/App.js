@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Papa from 'papaparse'
+import { Button, TextField } from '@material-ui/core'
+
 
 import Title from './components/title'
 import Configuration from './components/configuration'
@@ -49,6 +51,8 @@ function App() {
       <Configuration measurementFile={measurementFile} setMeasurementFile={handleChange} testBenchSelected={testBenchSelected} setTestBenchSelected={setTestBenchSelected} />
       <DBNetwork network={data.networks[0]} chartData={chartData} />
       <DBNetwork network={data.networks[1]} chartData={chartData} />
+      <Button onClick={handleAddNetwork}>Add Network</Button>
+      <Button onClick={() => pushNetwork()}>Refresh graph</Button>
       {measurementFile && 
       <>
         <SelectField label="Select input blocks" options={networkBlocks} value={inputNetworkBlock} setValue={setInputNetworkBlock}/>
